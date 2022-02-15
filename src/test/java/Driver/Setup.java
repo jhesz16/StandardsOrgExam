@@ -5,7 +5,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManagerException;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -29,17 +28,8 @@ public class Setup {
             case "CHROME": {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                try
-                {
-                    options.setBinary("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe");
-                    Driver.set(new ChromeDriver(options));
-                }
-                catch (WebDriverException e)
-                {
-                    options.setBinary("C:/Program Files/Google/Chrome/Application/chrome.exe");
-                    Driver.set(new ChromeDriver(options));
-                }
-
+                options.setBinary("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe");
+                Driver.set(new ChromeDriver(options));
                 break;
             }
             case "BRAVE": {
@@ -92,12 +82,7 @@ public class Setup {
     }
 
     public static String getBrowser() throws IOException {
-        String browser = getProperty("browserConfig");
-        if (browser.equals("${browser.name}"))
-        {
-            browser = "Chrome";
-        }
-        return browser;
+        return getProperty("browserConfig");
     }
 
     public static String getUrl() throws IOException {
