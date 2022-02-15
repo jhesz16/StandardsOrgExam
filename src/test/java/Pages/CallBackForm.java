@@ -5,6 +5,7 @@ import Helpers.GlobalHelpers;
 import org.openqa.selenium.By;
 
 import static Helpers.GlobalHelpers.*;
+import static Helpers.ShadowHelpers.scrollToBottom;
 
 public class CallBackForm {
 
@@ -33,6 +34,7 @@ public class CallBackForm {
 
     public void clickSubmit()
     {
+        scrollToBottom();
         clickObj("//*[text()='Submit']");
     }
 
