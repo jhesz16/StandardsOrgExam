@@ -45,4 +45,9 @@ public class ShadowHelpers {
         }
         System.out.println(shadowRootLocator + " clicked.");
     }
+
+    public static void scrollToBottom()
+    {
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
+    }
 }
